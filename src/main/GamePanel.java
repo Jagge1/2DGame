@@ -15,6 +15,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+    int FPS = 60;
+
     KeyHandler keyHandler = new KeyHandler();
 
     Thread gameThread;
@@ -40,7 +42,11 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void run() {
 
+        double drawInterval = 1000000000/FPS;
+
+
         while (gameThread != null){
+
 
             // 1. Update information (character positions)
             update();
