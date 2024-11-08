@@ -17,6 +17,7 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+
     int FPS = 60;
 
     KeyHandler keyHandler = new KeyHandler();
@@ -44,37 +45,37 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        /* SLEEP GAME LOOP
-        double drawInterval = 1000000000/FPS; // 0.01666 sec
-        double nextDrawTime = System.nanoTime() + drawInterval;
-
-        while (gameThread != null){
-
-            // 1. Update information (character positions)
-            update();
-
-            // 2. Draw the screen
-            //paintComponent method is being called through repaint
-            repaint();
-
-            try {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime/1000000; // Converting to milliseconds
-
-                if (remainingTime < 0){
-                    remainingTime = 0;
-                }
-
-                Thread.sleep((long) remainingTime); // Pauses the game loop
-
-                nextDrawTime += drawInterval;
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-
-        } */
+//        SLEEP GAME LOOP
+//        double drawInterval = 1000000000/FPS; // 0.01666 sec
+//        double nextDrawTime = System.nanoTime() + drawInterval;
+//
+//        while (gameThread != null){
+//
+//            // 1. Update information (character positions)
+//            update();
+//
+//            // 2. Draw the screen
+//            //paintComponent method is being called through repaint
+//            repaint();
+//
+//            try {
+//                double remainingTime = nextDrawTime - System.nanoTime();
+//                remainingTime = remainingTime/1000000; // Converting to milliseconds
+//
+//                if (remainingTime < 0){
+//                    remainingTime = 0;
+//                }
+//
+//                Thread.sleep((long) remainingTime); // Pauses the game loop
+//
+//                nextDrawTime += drawInterval;
+//
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//
+//        }
 
         // DELTA GAME LOOP
         double drawInterval = 1000000000/FPS;
