@@ -16,6 +16,7 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
+    public int sprintSpeed;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler){
         this.gamePanel = gamePanel;
@@ -32,6 +33,7 @@ public class Player extends Entity {
         worldX = gamePanel.tileSize * 23;
         worldY = gamePanel.tileSize * 21;
         speed = 4;
+        sprintSpeed = 5;
         direction = "down";
     }
 
@@ -81,6 +83,20 @@ public class Player extends Entity {
             } else if (keyHandler.rightPressed == true) {
                 direction = "right";
                 worldX += speed;
+            }
+
+            if(keyHandler.upPressed == true && keyHandler.lShiftPressed == true){
+                direction = "up";
+                worldY -= sprintSpeed;
+            } else if (keyHandler.downPressed == true && keyHandler.lShiftPressed == true){
+                direction = "down";
+                worldY += sprintSpeed;
+            } else if (keyHandler.leftPressed == true && keyHandler.lShiftPressed == true){
+                direction = "left";
+                worldX -= sprintSpeed;
+            } else if (keyHandler.rightPressed == true && keyHandler.lShiftPressed == true) {
+                direction = "right";
+                worldX += sprintSpeed;
             }
 
             spriteCounter++;
