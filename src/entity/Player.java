@@ -32,8 +32,8 @@ public class Player extends Entity {
 
         worldX = gamePanel.tileSize * 23;
         worldY = gamePanel.tileSize * 21;
-        speed = 4;
-        sprintSpeed = 5;
+        speed = 3;
+        sprintSpeed = 4;
         direction = "down";
     }
 
@@ -62,7 +62,8 @@ public class Player extends Entity {
 
     public void update(){
 
-        moving = true;
+        int spriteCounterWalking = 14;
+
 
         if (keyHandler.upPressed == true ||
                 keyHandler.downPressed == true ||
@@ -71,6 +72,7 @@ public class Player extends Entity {
 
             moving = true;
 
+            //Walking logic
             if(keyHandler.upPressed == true){
                 direction = "up";
                 worldY -= speed;
@@ -85,22 +87,29 @@ public class Player extends Entity {
                 worldX += speed;
             }
 
+            //Sprint logic
             if(keyHandler.upPressed == true && keyHandler.lShiftPressed == true){
                 direction = "up";
                 worldY -= sprintSpeed;
+                spriteCounterWalking = 8;
             } else if (keyHandler.downPressed == true && keyHandler.lShiftPressed == true){
                 direction = "down";
                 worldY += sprintSpeed;
+                spriteCounterWalking = 8;
             } else if (keyHandler.leftPressed == true && keyHandler.lShiftPressed == true){
                 direction = "left";
                 worldX -= sprintSpeed;
+                spriteCounterWalking = 8;
             } else if (keyHandler.rightPressed == true && keyHandler.lShiftPressed == true) {
                 direction = "right";
                 worldX += sprintSpeed;
+                spriteCounterWalking = 8;
             }
 
+
+
             spriteCounter++;
-            if (spriteCounter > 12){
+            if (spriteCounter > spriteCounterWalking){
                 if (spriteNum == 1){
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
