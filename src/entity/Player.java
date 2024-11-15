@@ -63,6 +63,8 @@ public class Player extends Entity {
     public void update(){
 
         int spriteCounterWalking = 14;
+        long start = System.currentTimeMillis();
+        long end = start + 2 * 1000;
 
 
         if (keyHandler.upPressed == true ||
@@ -87,26 +89,8 @@ public class Player extends Entity {
                 worldX += speed;
             }
 
-            //Sprint logic
-            if(keyHandler.upPressed == true && keyHandler.lShiftPressed == true){
-                direction = "up";
-                worldY -= sprintSpeed;
-                spriteCounterWalking = 8;
-            } else if (keyHandler.downPressed == true && keyHandler.lShiftPressed == true){
-                direction = "down";
-                worldY += sprintSpeed;
-                spriteCounterWalking = 8;
-            } else if (keyHandler.leftPressed == true && keyHandler.lShiftPressed == true){
-                direction = "left";
-                worldX -= sprintSpeed;
-                spriteCounterWalking = 8;
-            } else if (keyHandler.rightPressed == true && keyHandler.lShiftPressed == true) {
-                direction = "right";
-                worldX += sprintSpeed;
-                spriteCounterWalking = 8;
-            }
 
-
+            sprinting(spriteCounterWalking);
 
             spriteCounter++;
             if (spriteCounter > spriteCounterWalking){
@@ -121,6 +105,30 @@ public class Player extends Entity {
             moving = false;
         }
     }
+
+    public void sprinting(int spriteCounterWalking){
+
+        //Sprint logic
+        if(keyHandler.upPressed == true && keyHandler.lShiftPressed == true){
+            direction = "up";
+            worldY -= sprintSpeed;
+            spriteCounterWalking = 8;
+        } else if (keyHandler.downPressed == true && keyHandler.lShiftPressed == true){
+            direction = "down";
+            worldY += sprintSpeed;
+            spriteCounterWalking = 8;
+        } else if (keyHandler.leftPressed == true && keyHandler.lShiftPressed == true){
+            direction = "left";
+            worldX -= sprintSpeed;
+            spriteCounterWalking = 8;
+        } else if (keyHandler.rightPressed == true && keyHandler.lShiftPressed == true) {
+            direction = "right";
+            worldX += sprintSpeed;
+            spriteCounterWalking = 8;
+        }
+
+    }
+
     public void draw(Graphics2D g2){
 
         BufferedImage image = null;
